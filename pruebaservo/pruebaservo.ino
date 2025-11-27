@@ -5,9 +5,9 @@ Servo myservo;
 int period = 15;
 float timePrev, timeNow;
 
-float kp = 4.5;
-float ki = 0;
-float kd = 14;
+float kp = 7;
+float ki = 0.15;
+float kd = 20;
 
 // Setpoint inicial
 float distance_setpoint = 22;
@@ -22,7 +22,7 @@ void setup() {
   Serial.begin(9600);
 
   myservo.attach(11);
-  myservo.write(125);  // posición inicial
+  myservo.write(0);  // posición inicial
   timeNow = millis();
 }
 
@@ -37,7 +37,9 @@ void loop() {
 
   if (millis() > timeNow + period) {
     timeNow = millis();
-
+    if (PID_i > 125 || PID_i < 0){
+      PID_i = 0;
+    } else {
     // --- Lectura del sensor IR ---
     distance = calcularDistancia(20);
 
@@ -55,11 +57,13 @@ void loop() {
     PID_total = PID_p + PID_i + PID_d;
 
     // --- Mapeo a rango de servo ---
-    PID_total = map(PID_total, -150, 150, 80, 180);
+    PID_total = map(PID_total, -150, 150, 0, 125);
 
     // --- Límites del servo ---
-    if (PID_total > 180) PID_total = 180;
-    if (PID_total < 80) PID_total = 80;
+    if (PID_total > 125) PID_total = 125;
+    if (PID_total < 0) PID_total = 0;
+    // Anti WindUp
+    
     Serial.println(timeNow);
     Serial.print("Distancia IR: ");
     Serial.print(distance);
@@ -68,8 +72,9 @@ void loop() {
     Serial.println(PID_total);
     Serial.print("Error -> ");
     Serial.println(distance_error);
-
+    
     myservo.write(PID_total);
+    }
   }
 }
 
