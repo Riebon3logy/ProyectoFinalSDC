@@ -352,21 +352,21 @@ kp_label = ttk.Label(pid_frame, text="Kp:")
 kp_label.grid(row=0, column=0, padx=5, pady=5, sticky='e')
 kp_entry = ttk.Entry(pid_frame, width=15)
 kp_entry.grid(row=0, column=1, padx=5, pady=5)
-kp_entry.insert(0, "7.2")
+kp_entry.insert(0, "7")
 
 # Ki
 ki_label = ttk.Label(pid_frame, text="Ki:")
 ki_label.grid(row=1, column=0, padx=5, pady=5, sticky='e')
 ki_entry = ttk.Entry(pid_frame, width=15)
 ki_entry.grid(row=1, column=1, padx=5, pady=5)
-ki_entry.insert(0, "0.15")
+ki_entry.insert(0, "0.155")
 
 # Kd
 kd_label = ttk.Label(pid_frame, text="Kd:")
 kd_label.grid(row=2, column=0, padx=5, pady=5, sticky='e')
 kd_entry = ttk.Entry(pid_frame, width=15)
 kd_entry.grid(row=2, column=1, padx=5, pady=5)
-kd_entry.insert(0, "22.0")
+kd_entry.insert(0, "22.22")
 
 # Boton para enviar valores PID
 send_button = ttk.Button(left_frame, text="Enviar Valores PID", command=send_pid_values)

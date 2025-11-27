@@ -6,8 +6,8 @@ int period = 15;
 float timePrev, timeNow;
 
 float kp = 7;
-float ki = 0.15;
-float kd = 20;
+float ki = 0.155;
+float kd = 22.22;
 
 // Setpoint inicial
 float distance_setpoint = 22;
@@ -41,7 +41,7 @@ void loop() {
       PID_i = 0;
     } else {
     // --- Lectura del sensor IR ---
-    distance = calcularDistancia(20);
+    distance = calcularDistancia(40);
 
     // --- Cálculo del error ---
     distance_error = distance_setpoint - distance;
