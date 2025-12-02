@@ -4,9 +4,9 @@ Servo myServo;
 int periodo = 15;
 unsigned long tiempoAnterior = 0;
 
-float kp = 3;
-float ki = 0.0;
-float kd = 16;
+float kp = 0;
+float ki = 0;
+float kd = 0;
 
 float referencia = 22;
 float distancia = 0;
