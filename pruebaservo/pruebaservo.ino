@@ -4,15 +4,15 @@ Servo myServo;
 int periodo = 15;
 unsigned long tiempoAnterior = 0;
 
-float kp = 0;
-float ki = 0;
-float kd = 0;
+float kp = 3.111;
+float ki = 0.11;
+float kd = 23;
 
 float referencia = 22;
 float distancia = 0;
 float error_distancia = 0;
 float integral = 0;
-float maxIntegral = 10;
+float maxIntegral = 50;
 float error_anterior = 0;
 float PID_p, PID_i, PID_d, PID_total;
 
